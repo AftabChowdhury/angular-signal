@@ -1,4 +1,5 @@
 <p>Sell Items</p>
 <div *ngFor="let item of sellItems()">
   {{ item.id }} - {{ item.name }} - {{ item.quantity}}
+  <button (click)="addQuantity(item.id)">Add</button><br/>
 </div>

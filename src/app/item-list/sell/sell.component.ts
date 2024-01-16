@@ -17,4 +17,8 @@ export class SellComponent {
     private stateService: StateService
   ) {
   }
+
+  addQuantity(itemId: number) {
+    this.stateService.addQuantity(itemId, 1);
+  }
 }

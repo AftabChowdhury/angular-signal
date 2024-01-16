@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit } from '@angular/core';
 import { StateService } from '../services/state.service';
 import { BuyComponent } from './buy/buy.component';
 import { NgFor } from '@angular/common';
@@ -12,6 +12,9 @@ import { SellComponent } from './sell/sell.component';
   styleUrl: './item-list.component.scss',
 })
 export class ItemListComponent implements OnInit {
+  items = computed(()=> {
+    return this.stateService.itemsSignal();
+  });
   constructor(private stateService: StateService) {
   }
 
