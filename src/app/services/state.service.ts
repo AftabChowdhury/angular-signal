@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Item } from '../model/item';
 import { mock_items } from '../mock-data/item.mock-data';
 import { Observable, of } from 'rxjs';
@@ -9,9 +9,16 @@ import { Observable, of } from 'rxjs';
 export class StateService {
   itemsSignal = signal<Item[]>([]);
 
+  totalPrice = computed(() => this.itemsSignal().reduce((a, b) =>
+    a + (b.quantity * b.price), 0));
+
   getItems(): Observable<Item[]> {
-    this.itemsSignal.set(mock_items);
-    return of(mock_items);
+    this.itemsSignal.set(mock_items.map( item => {
+      return {...item, total: item.quantity * item.price };
+    }));
+    return of(mock_items.map( item => {
+      return {...item, total: item.quantity * item.price };
+    }));
   }
 
   addQuantity(itemId: number, quantity: number) {

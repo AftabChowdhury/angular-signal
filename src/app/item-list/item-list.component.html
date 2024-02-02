@@ -1,6 +1,7 @@
 <p>Items</p>
 <div *ngFor="let item of items()">
-  {{ item.id }} - {{ item.name }} - {{ item.quantity}}
+  {{ item.id }} - {{ item.name }} - {{ item.quantity }} - {{ item.price }} -{{ item.quantity * item.price }}
 </div>
+<div>Subtotal:  {{totalPrice()}}</div>
 <app-buy></app-buy>
 <app-sell></app-sell>

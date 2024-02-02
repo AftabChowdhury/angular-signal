@@ -15,6 +15,8 @@ export class ItemListComponent implements OnInit {
   items = computed(()=> {
     return this.stateService.itemsSignal();
   });
+
+  totalPrice = this.stateService.totalPrice;
   constructor(private stateService: StateService) {
   }
 
