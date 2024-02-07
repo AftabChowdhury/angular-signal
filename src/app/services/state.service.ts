@@ -11,14 +11,9 @@ export class StateService {
 
   totalPrice = computed(() => this.itemsSignal().reduce((a, b) =>
     a + (b.quantity * b.price), 0));
-
   getItems(): Observable<Item[]> {
-    this.itemsSignal.set(mock_items.map( item => {
-      return {...item, total: item.quantity * item.price };
-    }));
-    return of(mock_items.map( item => {
-      return {...item, total: item.quantity * item.price };
-    }));
+    this.itemsSignal.set(mock_items);
+    return of(mock_items);
   }
 
   addQuantity(itemId: number, quantity: number) {
