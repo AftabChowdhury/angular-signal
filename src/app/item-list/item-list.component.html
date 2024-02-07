@@ -1,0 +1,24 @@
+<h2>Items</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Price</th>
+    <th scope="col">Total Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of items()">
+    <th scope="row">{{ item.id }}</th>
+    <td>{{ item.name }}</td>
+    <td>{{ item.quantity }}</td>
+    <td>{{ item.price }}</td>
+    <td>{{ item.quantity * item.price }}</td>
+  </tr>
+  </tbody>
+</table>
+<p><span style="font-weight: bold;">Total:</span> {{totalPrice()}}</p>
+<app-buy></app-buy>
+<app-sell></app-sell>
